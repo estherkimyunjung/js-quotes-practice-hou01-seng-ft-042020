@@ -51,8 +51,22 @@
       "author": "Sonia Sotomayor"
     },
     {
-      "quoteId": 2,
+      "quote": "Test code~~~",
+      "author": "Esther Kim",
+      "likes": 0,
       "id": 11
+    },
+    {
+      "quote": "Test code~~~",
+      "author": "Esther",
+      "likes": 0,
+      "id": 12
+    },
+    {
+      "quote": "Test code~~",
+      "author": "Esther",
+      "likes": 0,
+      "id": 13
     }
   ],
   "likes": [
