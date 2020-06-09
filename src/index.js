@@ -12,7 +12,7 @@
 //   ]
 // }
 
-const url = 'http://localhost:3000/quotes'
+const url = ' http://localhost:3000/quotes?_embed=likes'
 
 fetch(url)
 .then(res => res.json())
@@ -49,7 +49,7 @@ function showQuotes(quote){
 
 
   const spanLikeNum = document.createElement('span')
-  spanLikeNum.innerText = 0
+  // spanLikeNum.innerText = 0
   btnLike.append(spanLikeNum)
 
   const btnDelete = document.createElement('button')
@@ -63,33 +63,6 @@ function showQuotes(quote){
   ulQuoteList.append(liQuoteCard)
 
 }
-
-ulQuoteList.addEventListener('click', e => {
-
-if (e.target.className === "btn-danger"){
-
-  const quoteDeleteId = e.target.dataset.quoteDeleteId
-  // debugger
-  const options = {
-    method: 'DELETE'
-  }
-  
-  // console.log(`${url}/${quoteDeleteId}`)
-  fetch(`${url}/${quoteDeleteId}`, options)
-  .then(res => res.json())
-  .then(deletedQuote => {
-    // console.log(quoteDeleteId)
-    const deleteEle = document.querySelector
-      (`[data-quote-delete-id="${quoteDeleteId}"]`).parentElement.parentElement
-    deleteEle.remove()
-  })
-
-} else {
-  console.log("TEST")
-}
-
-
-})
 
 const form = document.querySelector('#new-quote-form')
 let inputQuote = document.querySelector('#new-quote')
@@ -111,7 +84,7 @@ form.addEventListener('submit', (e) => {
     body: JSON.stringify({
       quote: inputQuote,
       author: inputAuthor,
-      likes: 0
+      // likes: likeQuote
     })
   }
   fetch(url, options)
@@ -123,3 +96,52 @@ form.addEventListener('submit', (e) => {
   
 })
 
+ulQuoteList.addEventListener('click', e => {
+
+  if (e.target.className === "btn-danger"){
+  
+    const quoteDeleteId = e.target.dataset.quoteDeleteId
+    // debugger
+    const options = {
+      method: 'DELETE'
+    }
+    
+    // console.log(`${url}/${quoteDeleteId}`)
+    fetch(`http://localhost:3000/quotes/${quoteDeleteId}`, options)
+    .then(res => res.json())
+    .then(deletedQuote => {
+      // console.log(quoteDeleteId)
+      const deleteEle = document.querySelector
+        (`[data-quote-delete-id="${quoteDeleteId}"]`).parentElement.parentElement
+      deleteEle.remove()
+    })
+  
+  } else {
+    console.log("test like button!")
+  
+    const quoteLikeId = e.target.dataset.quoteLikeId
+    let spanLikeNum = e.target.children.value
+    // console.log(e.target, quoteLikeId)
+
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        "quoteId": quoteLikeId,
+        "createdAt": Date.now()  
+      })
+    }
+
+    fetch('http://localhost:3000/likes', options)
+    .then(res => res.json())
+    .then(likeQuote => {
+      console.log(showQuotes)
+      // showQuotes(likeQuote)
+    })
+  
+  }
+  
+})

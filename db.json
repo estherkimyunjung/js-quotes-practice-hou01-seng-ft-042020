@@ -57,16 +57,9 @@
       "id": 11
     },
     {
-      "quote": "Test code~~~",
+      "quote": "Test code~~!!",
       "author": "Esther",
-      "likes": 0,
       "id": 12
-    },
-    {
-      "quote": "Test code~~",
-      "author": "Esther",
-      "likes": 0,
-      "id": 13
     }
   ],
   "likes": [
@@ -74,6 +67,11 @@
       "id": 1,
       "quoteId": 1,
       "createdAt": 1558524356
+    },
+    {
+      "quoteId": "12",
+      "createdAt": 1591669772233,
+      "id": 2
     }
   ]
 }
