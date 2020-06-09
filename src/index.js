@@ -49,7 +49,9 @@ function showQuotes(quote){
 
 
   const spanLikeNum = document.createElement('span')
-  // spanLikeNum.innerText = 0
+  // console.log(quote.likes.length)
+  spanLikeNum.innerText = quote.likes.length;
+  // spanLikeNum.innerText = 0;
   btnLike.append(spanLikeNum)
 
   const btnDelete = document.createElement('button')
@@ -74,6 +76,9 @@ form.addEventListener('submit', (e) => {
   
   inputQuote = e.target[0].value
   inputAuthor = e.target[1].value
+  // spanLikeNum = 
+  // console.log(e.target)
+  // console.log(spanLikeNum)
 
   const options = {
     method: 'POST',
@@ -84,7 +89,7 @@ form.addEventListener('submit', (e) => {
     body: JSON.stringify({
       quote: inputQuote,
       author: inputAuthor,
-      // likes: likeQuote
+      likes: 0
     })
   }
   fetch(url, options)
@@ -130,7 +135,7 @@ ulQuoteList.addEventListener('click', e => {
         'Accept': 'application/json'
       },
       body: JSON.stringify({
-        "quoteId": quoteLikeId,
+        "quoteId": parseInt(quoteLikeId),
         "createdAt": Date.now()  
       })
     }
@@ -138,8 +143,11 @@ ulQuoteList.addEventListener('click', e => {
     fetch('http://localhost:3000/likes', options)
     .then(res => res.json())
     .then(likeQuote => {
-      console.log(showQuotes)
       // showQuotes(likeQuote)
+      console.log(likeQuote)
+      console.log(e.target.children)
+      // debugger
+      // e.target.children.innerText = likeQuote
     })
   
   }

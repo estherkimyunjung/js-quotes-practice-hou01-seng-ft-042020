@@ -51,14 +51,15 @@
       "author": "Sonia Sotomayor"
     },
     {
-      "quote": "Test code~~~",
+      "quote": "Test code~~!!",
       "author": "Esther Kim",
       "likes": 0,
       "id": 11
     },
     {
-      "quote": "Test code~~!!",
+      "quote": "Test code~~~",
       "author": "Esther",
+      "likes": 0,
       "id": 12
     }
   ],
@@ -69,9 +70,24 @@
       "createdAt": 1558524356
     },
     {
-      "quoteId": "12",
-      "createdAt": 1591669772233,
+      "quoteId": 11,
+      "createdAt": 1591674347766,
       "id": 2
+    },
+    {
+      "quoteId": 11,
+      "createdAt": 1591674418417,
+      "id": 3
+    },
+    {
+      "quoteId": 11,
+      "createdAt": 1591674464186,
+      "id": 4
+    },
+    {
+      "quoteId": 12,
+      "createdAt": 1591674601228,
+      "id": 5
     }
   ]
 }
