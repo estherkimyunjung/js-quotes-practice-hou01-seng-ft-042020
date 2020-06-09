@@ -50,8 +50,11 @@ function showQuotes(quote){
 
   const spanLikeNum = document.createElement('span')
   // console.log(quote.likes.length)
-  spanLikeNum.innerText = quote.likes.length;
-  // spanLikeNum.innerText = 0;
+  if (quote.likes.length === 'undefined'){
+    spanLikeNum.innerText = 0;
+  } else {
+    spanLikeNum.innerText = quote.likes.length;
+  }
   btnLike.append(spanLikeNum)
 
   const btnDelete = document.createElement('button')
@@ -146,6 +149,7 @@ ulQuoteList.addEventListener('click', e => {
       // showQuotes(likeQuote)
       console.log(likeQuote)
       console.log(e.target.children)
+      location.reload();
       // debugger
       // e.target.children.innerText = likeQuote
     })
